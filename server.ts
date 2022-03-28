@@ -28,6 +28,16 @@ app.get('/', (req, res) => {
     })
 })
 
+app.get('/add', function (req, res) {
+    const newRegion = new region({
+        name: "New Test",
+        capital: "New Test",
+        leader: "New Test"
+    })
+    newRegion.save();
+  });
+
 app.listen(process.env.PORT || 4000, function() {
     console.log('server running');
 })
+
