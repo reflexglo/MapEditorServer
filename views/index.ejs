@@ -9,7 +9,10 @@
         <script>
           $(document).ready(function(){
             $("#add").click(function(){
-              $.get("/add", function(data){
+              var name = document.getElementById("name").value;
+              var capital = document.getElementById("cap").value;
+              var leader = document.getElementById("lead").value;
+              $.post("/add", {name: name, capital: capital, leader: leader}, function(data){
                 console.log(data);
               });
             });
@@ -36,6 +39,23 @@
                     </tr>
                     <%})%>
                 </tbody>
+                <tfoot>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">
+                      <label for="name">Name:</label>
+                      <input type="text" id="name" name="name"><br><br>
+                    </th>
+                    <th scope="col">
+                      <label for="cap">Capital:</label>
+                      <input type="text" id="cap" name="cap"><br><br>
+                    </th>
+                    <th scope="col">
+                      <label for="lead">Leader:</label>
+                      <input type="text" id="lead" name="lead"><br><br>
+                    </th>
+                  </tr>
+                </tfoot>
               </table>
               <button type="submit" id="add">Add Region</button>
     </body>
